@@ -1,0 +1,35 @@
+<Device Model="DIN-AP3">
+   <Network Type="Cresnet" Id="01">
+      <Device Model="C2N-CBD-P" DeviceId="10" Name="BACK OF RETAIL"/>
+      <Device Model="C2N-CBD-P" DeviceId="11" Name="DELI"/>
+      <Device Model="C2N-CBD-P" DeviceId="12" Name="DINING"/>
+      <Device Model="C2N-CBD-P" DeviceId="13" Name="SALOON BAR"/>
+      <Device Model="C2N-CBD-P" DeviceId="14" Name="JANITORS"/>
+      <Device Model="C2N-CBD-P" DeviceId="15" Name="EMPLOYEE LOCKER EAST"/>
+      <Device Model="C2N-CBD-P" DeviceId="16" Name="EMPLOYEE LOCKER WEST"/>
+      <Device Model="GLS-SIM" DeviceId="40"/>
+      <Device Model="GLS-SIM" DeviceId="41"/>
+      <Device Model="GLS-SIM" DeviceId="42"/>
+      <Device Model="GLS-SIM" DeviceId="43"/>
+      <Device Model="GLS-SIM" DeviceId="45"/>
+      <Device Model="GLS-SIM" DeviceId="46"/>
+      <Device Model="GLS-SIM" DeviceId="47"/>
+      <Device Model="GLS-SIM" DeviceId="48"/>
+      <Device Model="GLS-SIM" DeviceId="49"/>
+      <Device Model="GLS-SIM" DeviceId="50"/>
+      <Device Model="CLX-2DIMU8,CLX-2DIMU8-277,CLXI-2DIMU8,CLXI-2DIMU8-277" DeviceId="63" Name="Enclosure 3 Slot 03"/>
+      <Device Model="CLX-2DIMU8,CLX-2DIMU8-277,CLXI-2DIMU8,CLXI-2DIMU8-277" DeviceId="64" Name="Enclosure 1 Slot 04"/>
+      <Device Model="CLX-2DIMU8,CLX-2DIMU8-277,CLXI-2DIMU8,CLXI-2DIMU8-277" DeviceId="65" Name="Enclosure 3 Slot 05"/>
+      <Device Model="CLX-2DIMU8,CLX-2DIMU8-277,CLXI-2DIMU8,CLXI-2DIMU8-277" DeviceId="66" Name="Enclosure 1 Slot 06"/>
+      <Device Model="CLX-1DIMU4" DeviceId="67" Name="Enclosure 1 Slot 07"/>
+      <Device Model="CLX-2DIMFLV8,CLXI-2DIMFLV8" DeviceId="68" Name="Enclosure 1 Slot 08">
+         <Network Type="Cresnet"/>
+      </Device>
+      <Device Model="CLX-2DIMU8,CLX-2DIMU8-277,CLXI-2DIMU8,CLXI-2DIMU8-277" DeviceId="72" Name="Enclosure 2 Slot 02"/>
+      <Device Model="CLX-4HSW4" DeviceId="73" Name="Enclosure 2 Slot 03"/>
+      <Device Model="CLX-2DIMU8,CLX-2DIMU8-277,CLXI-2DIMU8,CLXI-2DIMU8-277" DeviceId="74" Name="Enclosure 2 Slot 04"/>
+      <Device Model="CLX-2DIMU8,CLX-2DIMU8-277,CLXI-2DIMU8,CLXI-2DIMU8-277" DeviceId="75" Name="Enclosure 2 Slot 05"/>
+      <Device Model="CLX-2DIMU8,CLX-2DIMU8-277,CLXI-2DIMU8,CLXI-2DIMU8-277" DeviceId="76" Name="Enclosure 2 Slot 06"/>
+   </Network>
+   <Network Type="Ethernet" Id="02"/>
+</Device>

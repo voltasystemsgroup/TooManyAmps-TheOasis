@@ -1,0 +1,28 @@
+<Device Model="DIN-AP3">
+   <Network Type="Cresnet" Id="01">
+      <Device Model="C2N-CBD-P" DeviceId="10"/>
+      <Device Model="C2N-CBD-P" DeviceId="11"/>
+      <Device Model="C2N-CBD-P" DeviceId="12"/>
+      <Device Model="C2N-CBD-P" DeviceId="13"/>
+      <Device Model="C2N-CBD-P" DeviceId="14"/>
+      <Device Model="C2N-CBD-P" DeviceId="15"/>
+      <Device Model="C2N-CBD-P" DeviceId="16"/>
+      <Device Model="CLX-2DIMU8,CLX-2DIMU8-277,CLXI-2DIMU8,CLXI-2DIMU8-277" DeviceId="63" Name="Enclosure 3 Slot 03"/>
+      <Device Model="CLX-2DIMFLV8,CLXI-2DIMFLV8" DeviceId="64" Name="Enclosure 1 Slot 04">
+         <Network Type="Cresnet"/>
+      </Device>
+      <Device Model="CLX-2DIMU8,CLX-2DIMU8-277,CLXI-2DIMU8,CLXI-2DIMU8-277" DeviceId="65" Name="Enclosure 3 Slot 05"/>
+      <Device Model="CLX-2DIMFLV8,CLXI-2DIMFLV8" DeviceId="66" Name="Enclosure 1 Slot 06">
+         <Network Type="Cresnet"/>
+      </Device>
+      <Device Model="CLX-1DIMU4" DeviceId="67" Name="Enclosure 1 Slot 07"/>
+      <Device Model="CLX-2DIMFLV8,CLXI-2DIMFLV8" DeviceId="68" Name="Enclosure 1 Slot 08">
+         <Network Type="Cresnet"/>
+      </Device>
+      <Device Model="CLX-2DIMU8,CLX-2DIMU8-277,CLXI-2DIMU8,CLXI-2DIMU8-277" DeviceId="72" Name="Enclosure 2 Slot 02"/>
+      <Device Model="CLX-4HSW4" DeviceId="73" Name="Enclosure 2 Slot 03"/>
+      <Device Model="CLX-2DIMU8,CLX-2DIMU8-277,CLXI-2DIMU8,CLXI-2DIMU8-277" DeviceId="74" Name="Enclosure 2 Slot 04"/>
+      <Device Model="CLX-2DIMU8,CLX-2DIMU8-277,CLXI-2DIMU8,CLXI-2DIMU8-277" DeviceId="76" Name="Enclosure 2 Slot 06"/>
+   </Network>
+   <Network Type="Ethernet" Id="02"/>
+</Device>

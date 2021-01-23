@@ -1,0 +1,24 @@
+File Version	v3.03.00
+Modified Date	10/23/2018
+Modified Time	17:26:09
+
+LoadID	LoadName	RoomID	DIM_setting	Ramp_time	Upper_limit	Lower_limit	TotalWattage
+16	CU3	2	True	500	100	1	100
+18	CB Lights 1	2	False	500	100	1	100
+19	CU1	2	True	500	100	1	100
+20	CU2	2	True	500	100	1	100
+21	East Daylights	1	True	500	100	1	100
+22	West Daylights	1	True	500	100	1	100
+23	Cupola Daylights	1	True	500	100	1	100
+25	Registration North Desk Lights	1	True	500	100	1	100
+26	Registration General Lights	1	True	500	100	1	100
+27	Chandelier	1	True	500	100	1	100
+28	Plaza Fountain Lights	2	False	500	100	1	100
+29	Plaza Landscape	2	False	500	100	1	100
+30	East Parking Area	2	False	500	100	1	100
+31	East Entrance Sign Lights	2	False	500	100	1	100
+32	Building Signage 1	2	False	500	100	1	100
+33	Building Signage 2	2	False	500	100	1	100
+34	outlets	1	False	500	100	1	100
+35	Exterior Sconces	2	True	500	100	1	100
+

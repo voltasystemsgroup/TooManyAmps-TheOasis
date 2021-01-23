@@ -1,0 +1,12 @@
+[BEGIN]
+  ObjTp=FSgntr
+  Sgntr=ArchiveManifest
+  RelVrs=4.09.04
+  IsProgram=1
+  TopLevelProgram=TOO Many Amps_Config.smw
+[END]
+[BEGIN]
+  ObjTp=ArchiveItem
+  File=TOO Many Amps_Config.smw
+  Scope=1
+[END]

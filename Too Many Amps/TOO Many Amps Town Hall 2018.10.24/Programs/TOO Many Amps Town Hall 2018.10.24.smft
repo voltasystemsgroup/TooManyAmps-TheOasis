@@ -1,0 +1,18 @@
+<Device Model="DIN-AP3">
+   <Network Type="Cresnet" Id="01">
+      <Device Model="C2N-CBD-P" DeviceId="10" Name="Counter"/>
+      <Device Model="CLX-2DIMU8,CLX-2DIMU8-277,CLXI-2DIMU8,CLXI-2DIMU8-277" DeviceId="20" Name="Enclosure 1 Slot 07"/>
+      <Device Model="CLX-4HSW4" DeviceId="21" Name="Enclosure 1 Slot 06"/>
+      <Device Model="CLX-4HSW4" DeviceId="22" Name="Enclosure 1 Slot 05"/>
+      <Device Model="GL-EXP-DIMFLV-CN" DeviceId="23" Name="Net-Device ID 23"/>
+      <Device Model="GL-EXP-DIMFLV-CN" DeviceId="24" Name="Net-Device ID 24"/>
+      <Device Model="GL-EXP-DIMFLV-CN" DeviceId="25" Name="Net-Device ID 25"/>
+      <Device Model="GL-EXP-DIMU-CN" DeviceId="26" Name="Net-Device ID 03"/>
+      <Device Model="GL-EXP-DIMFLV-CN" DeviceId="27" Name="Net-Device ID 27"/>
+      <Device Model="GLS-SIM" DeviceId="30"/>
+      <Device Model="GLS-SIM" DeviceId="31"/>
+      <Device Model="GLS-SIM" DeviceId="32"/>
+      <Device Model="GLS-SIM" DeviceId="33"/>
+   </Network>
+   <Network Type="Ethernet" Id="02"/>
+</Device>

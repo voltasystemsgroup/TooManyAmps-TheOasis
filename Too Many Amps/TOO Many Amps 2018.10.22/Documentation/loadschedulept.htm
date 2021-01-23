@@ -1,0 +1,1290 @@
+<html>
+	<head>
+		<title>Load Schedule w/ Panel Terminations</title>
+		<style type="text/css">
+			<!--
+              body.default		{ font-family: Arial, Helvetica;
+              font-size: 10pt }
+
+              table.default		{ font-family: Arial, Helvetica;
+              border-collapse: collapse;
+              empty-cells: show;
+              table-layout: fixed;
+              font-size: 8.0pt}
+
+              table.module		{ font-family: Arial, Helvetica;
+              font-size: 8.5pt;
+              border-collapse: collapse;
+              empty-cells: show;
+              table-layout: fixed }
+
+              table.page		    { page-break-after: always }
+
+              table.encl_view		{ border: 1pt solid black;
+              background: #FFFFCC;
+              font-size: 6pt;
+              table-layout: fixed }
+
+              table.header        { font-family:Arial, Helvetica;
+              font-size: 10pt;
+              border-collapse:collapse;
+              width:100%;
+              empty-cells: show;
+              margin-bottom: 0.05in;
+              cell-padding:0.01in }
+
+
+              table.header_title        { font-family:Arial, Helvetica;
+              font-size: 10pt;
+              border-collapse:collapse;
+              width:100%;
+              empty-cells: show;
+              margin-bottom: 0.01in;
+              cell-padding:0.01in }
+
+
+              tr.titleblock		{ font-weight: normal; font-size: 10pt;
+              vertical-align: top }
+
+              tr.pageseparate		{ background: rgb(214,214,214);
+              vertical-align: center;
+              height: 0.3in }
+
+              tr.circuit		    { height: 0.25in }
+
+              tr.encl_row		    { spacing: 5px }
+
+              td.reporttitle		{ font-weight: bold; font-size: 12pt }
+
+              td.titlebottom		{ border-bottom: 0.05in solid rgb(170,170,170) }
+
+              td.titletop		    { border-top: 0.05in solid rgb(170,170,170) }
+
+              td.pagetitle		{ font-size: 10pt;
+              border-top: 0.01in solid black;
+              border-bottom: 0.01in solid black }
+
+              td.modulename		{ font-weight: bold; font-size: 9pt;
+              padding-bottom: 2px }
+
+              td.hot   			{ background: black;
+              font-weight: bold;
+              color: white;
+              border: 1pt solid black }
+
+              td.ckt_loc	    	{ padding-right: 7px;
+              padding-left: 7px }
+
+
+              td.ckt_red		    { background: rgb(214, 82, 87);
+              color: black;
+              border: 1pt solid black }
+
+              td.ckt_blue		    { background: rgb(106, 162, 219);
+              color: black;
+              border: 1pt solid black }
+
+              td.ckt_white		{ background: #FFFFFFF;
+              color: black;
+              border: 1pt solid black }
+
+              td.feedseparate     { background: rgb(212,208,172);
+              border: 1pt solid black }
+
+              td.ckt_type		    {  }
+
+              td.ckt_color		{  }
+
+              td.bar			    { background: black;
+              border: 1pt solid black }
+
+              td.encl	 		    { padding-top: 20pt;
+              padding-left: 10pt;
+              width: 60px }
+
+              td.encl_cur		    { background: rgb(214,214,214);
+              border: 2pt solid black;
+              font-weight: bold;
+              width: 15px;
+              height: 25px }
+
+              td.encl_cell		{ background: white;
+              border: 1pt solid black;
+              width: 15px;
+              height: 25px }
+
+              img.arr_tail		{ width: 7;
+              height: 1 }
+
+              img.arr_front		{ width: 7;
+              height: 1 }
+
+              img.arr_head		{ width: 5;
+              height: 5 }
+
+              div.encl_name		{ font-size: 8pt;
+              text-align: center }
+
+              table.mod_data		{ border-collapse: collapse;
+              empty-cells: show;
+              table-layout: fixed;
+              font-size: 9.5pt;
+              page-break-after: always }
+
+              td.mod_data_lt		{ text-align: left;
+              padding: 0pt;
+              border-right: 1.5pt solid black;
+              height: 80px }
+
+              td.mod_data_rt		{ text-align: right;
+              padding: 0pt;
+              border-left: 1.5pt solid black;
+              height: 80px }
+
+              td.fix_img_lt		{ background: rgb(250,250,250) }
+
+              td.fix_img_rt		{ background: rgb(250,250,250) }
+
+              td.mod_img		    { background: rgb(250,250,250) }
+
+              td.no_inst		    { background: rgb(250,250,250);
+              border: 1pt dashed gray;
+              font-weight: bold; font-size: 8.5pt;
+              height: 80px }
+
+              td.ref_fix_lt		{ background: rgb(250,250,250);
+              border-left: 1.5pt solid black;
+              border-top: 1.5pt solid black;
+              width: 80px }
+
+              td.ref_fix_rt		{ background: rgb(250,250,250);
+              border-right: 1.5pt solid black;
+              border-top: 1.5pt solid black;
+              width: 80px }
+
+              td.ref_dev		    { background: rgb(250,250,250);
+              border-top: 1.5pt solid black;
+              width: 80px }
+
+              td.ref_mod_data		{ width: 120px }
+
+              img.mod_img		    { width: 84px }
+
+              div.mod_name		{ background: black;
+              color: white;
+              border-bottom: 2pt solid black }
+
+              img.device		    { border: 0pt }
+
+              tr.header		    { font-weight: bold }
+
+              tr.r0			    { background-color: rgb(232,232,232) }
+
+              tr.r1			    { background-color: white }
+
+
+              td.header		    { border-top: 0.5pt solid black;
+              border-bottom: 2.0pt solid black;
+              border-left: 0.5pt solid black;
+              border-right: 0.5pt solid black;
+              background-color:rgb(200,200,200);
+              padding: 2pt
+              }
+
+              td.ld_cell          { border:0.5pt solid black;
+              vertical-align:top;
+              padding: 2pt }
+
+              thead               { display: table-header-group }
+
+              td.bom_req		    { background-color: rgb(232,232,232) }
+              td.bom_cell         { border: 0.5pt solid black;
+              vertical-align: top }
+            -->
+		</style>
+	</head>
+	<body class="default"><table class="header" width="100%"><tr><td colspan="25" rowspan="3"><img width="200" src="logogr.jpg"/></td></tr><tr/><tr/><tr class="titleblock"><td class="titletop" width="100%" colspan="25"><table class="header_title"><tr><td align="right" width="8%"><b>Report: </b></td><td width="92%">Load Schedule w/ Panel Terminations</td></tr></table></td></tr><tr class="titleblock"><td width="8%" align="right"><b>Project: </b></td><td width="32%">TOO Many Amps 2018.10.22</td><td width="13%" align="right"><b>Dealer: </b></td><td width="47%">Volta Systems Group</td></tr><tr class="titleblock"><td align="right"><b>Creator: </b></td><td>
+                    Crestron D3 Pro v3.03.015</td><td align="right"><b>Description: </b></td><td></td></tr><tr class="titleblock"><td class="titlebottom" align="right"><b>Date: </b></td><td class="titlebottom">11/2/2018</td><td class="titlebottom" align="right"><b>System Number:</b></td><td class="titlebottom"></td></tr></table><br/><br/>
+		<table class="default" width="100%" style="border: 1pt solid black;	table-layout: fixed">
+			<col style="width: 1.30in"/>
+			<col style="width: 0.40in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.55in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.15in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.20in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.25in"/>
+			<thead>
+				<tr class="sectionheader" valign="bottom">
+					<td class="header" align="left"><b>Area / Room / Controlled Ckt Name</b></td>
+					<td class="header" align="left"><b>Controlled Ckt No.</b></td>
+					<td class="header" align="left"><b>Status</b></td>
+					<td class="header" align="left"><b>Fixture</b></td>
+					<td class="header" align="left"><b>Load	Type</b></td>
+					<td class="header" align="left"><b>Fixture Watts</b></td>
+					<td class="header" align="left"><b>Fixture Qty</b></td>
+					<td class="header" align="left"><b>Total Watts</b></td>
+					<td class="header" align="left"><b>Dim</b></td>
+					<td class="header" align="left"><b>On Backup</b></td>
+					<td class="header" align="left"><b>Arc Fault</b></td>
+					<td class="header" align="left"><b>Enclosure</b></td>
+					<td class="header" align="left"><b>Slot</b></td>
+					<td class="header" align="left"><b>Module</b></td>
+					<td class="header" align="left"><b>Output</b></td>
+				</tr>
+			</thead>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>BASEMENT<b> / </b>BASEMENT OFFICES</td>
+				<td class="ld_cell" align="left">HP1-7</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Other</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">6</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">1</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>DELI<b> / </b>DELI DOWNLIGHTS SCONES</td>
+				<td class="ld_cell" align="left">LP2-16.</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Downlights</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">7</td>
+				<td class="ld_cell" align="left">CLX-1DIMU4</td>
+				<td class="ld_cell" align="left">3</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>DINING ROOM<b> / </b>DINING 112  CHANDELIERS</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Chandeliers</td>
+				<td class="ld_cell" align="left">Electronic LV</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">N / A</td>
+				<td class="ld_cell" align="left">N / A</td>
+				<td class="ld_cell" align="left">GL-EXP-DIMU-CN</td>
+				<td class="ld_cell" align="left">1</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>DINING ROOM<b> / </b>DINING 112 COVE LIGHT</td>
+				<td class="ld_cell" align="left">LP3-28..</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Cove Lights</td>
+				<td class="ld_cell" align="left">Magnetic LV</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">120*</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">6</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">2</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>DINING ROOM<b> / </b>DINING 112 DOWNLIGHTS</td>
+				<td class="ld_cell" align="left">LP3-28...</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Downlights</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">6</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">1</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>DINING ROOM<b> / </b>DINING 112 EAST DAYLIGHTING</td>
+				<td class="ld_cell" align="left">LP3-28....</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Other</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">6</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">5</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>DINING ROOM<b> / </b>DINING 112 GENERAL DOWNLIGHTS 1</td>
+				<td class="ld_cell" align="left">LP3-28.....</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Downlights</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">2</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">1</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>DINING ROOM<b> / </b>DINING 112 GENERAL DOWNLIGHTS 2</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Downlights</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">2</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">2</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>DINING ROOM<b> / </b>DINING 112 GENERAL DOWNLIGHTS 3</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Downlights</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">2</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">3</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>DINING ROOM<b> / </b>DINING 112 GENERAL DOWNLIGHTS 4</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Downlights</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">2</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">4</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>DINING ROOM<b> / </b>DINING 112 NORTH DAYLIGHTING</td>
+				<td class="ld_cell" align="left">LP3-28......</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Other</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">6</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">6</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>DINING ROOM<b> / </b>DINING 112 WALL WASH SCONCES</td>
+				<td class="ld_cell" align="left">LP3-28.......</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Sconces</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">6</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">3</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>DINING ROOM<b> / </b>DINING 112 WEST DAYLIGHTING</td>
+				<td class="ld_cell" align="left">LP3-28........</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Other</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">6</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">7</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>DINING ROOM<b> / </b>DINING FANS</td>
+				<td class="ld_cell" align="left">LP3-34</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Exhaust Fan</td>
+				<td class="ld_cell" align="left">Switched (Non-Lighting)</td>
+				<td class="ld_cell" align="right">200</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">200</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-4HSW4</td>
+				<td class="ld_cell" align="left">4</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>EMPLOYEE DINING<b> / </b>EMPLOYEE DINING 2</td>
+				<td class="ld_cell" align="left">LP2-22</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Other</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">5</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">6</td>
+			</tr>
+			<table class="page"/>
+			<table class="header" width="100%"><tr><td colspan="25" rowspan="3"><img width="200" src="logogr.jpg"/></td></tr><tr/><tr/><tr class="titleblock"><td class="titletop" width="100%" colspan="25"><table class="header_title"><tr><td align="right" width="8%"><b>Report: </b></td><td width="92%">Load Schedule w/ Panel Terminations</td></tr></table></td></tr><tr class="titleblock"><td width="8%" align="right"><b>Project: </b></td><td width="32%">TOO Many Amps 2018.10.22</td><td width="13%" align="right"><b>Dealer: </b></td><td width="47%">Volta Systems Group</td></tr><tr class="titleblock"><td align="right"><b>Creator: </b></td><td>
+                    Crestron D3 Pro v3.03.015</td><td align="right"><b>Description: </b></td><td></td></tr><tr class="titleblock"><td class="titlebottom" align="right"><b>Date: </b></td><td class="titlebottom">11/2/2018</td><td class="titlebottom" align="right"><b>System Number:</b></td><td class="titlebottom"></td></tr></table><br/><br/>
+			<table class="default" width="100%" style="border: 1pt solid black;	table-layout: fixed"/>
+			<col style="width: 1.30in"/>
+			<col style="width: 0.40in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.55in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.15in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.20in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.25in"/>
+			<tr class="sectionheader" valign="bottom">
+				<td class="header" align="left"><b>Area / Room / Controlled Ckt Name</b></td>
+				<td class="header" align="left"><b>Controlled Ckt No.</b></td>
+				<td class="header" align="left"><b>Status</b></td>
+				<td class="header" align="left"><b>Fixture</b></td>
+				<td class="header" align="left"><b>Load	Type</b></td>
+				<td class="header" align="left"><b>Fixture Watts</b></td>
+				<td class="header" align="left"><b>Fixture Qty</b></td>
+				<td class="header" align="left"><b>Total Watts</b></td>
+				<td class="header" align="left"><b>Dim</b></td>
+				<td class="header" align="left"><b>On Backup</b></td>
+				<td class="header" align="left"><b>Arc Fault</b></td>
+				<td class="header" align="left"><b>Enclosure</b></td>
+				<td class="header" align="left"><b>Slot</b></td>
+				<td class="header" align="left"><b>Module</b></td>
+				<td class="header" align="left"><b>Output</b></td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>EMPLOYEE DINING<b> / </b>EMPLOYEE DINING Part 1</td>
+				<td class="ld_cell" align="left">LP2-20</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Other</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">5</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">2</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>EMPLOYEE DINING<b> / </b>EMPLOYEE DINING Part 3</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Other</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">5</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">3</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>EMPLOYEE DINING<b> / </b>EMPLOYEE DINING Part 4</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Other</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">5</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">4</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>EMPLOYEE DINING<b> / </b>EMPLOYEE DINING SOUTH DAYLIGHT</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Other</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">5</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">7</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>EMPLOYEE DINING<b> / </b>EMPLOYEE DINING WEST DAYLIGHT</td>
+				<td class="ld_cell" align="left">LP2-20.</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Other</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">5</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">1</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>EMPLOYEE DINING<b> / </b>EMPLOYEE DINING WEST DAYLIGHT 2</td>
+				<td class="ld_cell" align="left">LP2-22.</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Other</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">5</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">5</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>EMPLOYEE DINING<b> / </b>EMPLOYEE LOCKERS RR</td>
+				<td class="ld_cell" align="left">HP1-9</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Other</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">6</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">5</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>EXTERIOR<b> / </b>CH OUTSIDE LIGHTS</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Outdoor Lights</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">6</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">4</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>EXTERIOR<b> / </b>FRONT ENTRANCE</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Outdoor Lights</td>
+				<td class="ld_cell" align="left">Electronic LV</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">7</td>
+				<td class="ld_cell" align="left">CLX-1DIMU4</td>
+				<td class="ld_cell" align="left">4</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>EXTERIOR<b> / </b>LOADING DOCK STEPS</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Outdoor Lights</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">1</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>EXTERIOR<b> / </b>PORCHE ENTRANCE</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Outdoor Lights</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">2</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>EXTERIOR<b> / </b>STEPS</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Outdoor Lights</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">3</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>EXTERIOR<b> / </b>WEST SIDE EXT LIGHTS PART 1</td>
+				<td class="ld_cell" align="left">LP2-24</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Outdoor Lights</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">4</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>KITCHEN<b> / </b>KITCHEN</td>
+				<td class="ld_cell" align="left">HP1-9.</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Other</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">4</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">1</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>KITCHEN<b> / </b>KITCHEN 2</td>
+				<td class="ld_cell" align="left">HP1-11</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Other</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">6</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">6</td>
+			</tr>
+			<table class="page"/>
+			<table class="header" width="100%"><tr><td colspan="25" rowspan="3"><img width="200" src="logogr.jpg"/></td></tr><tr/><tr/><tr class="titleblock"><td class="titletop" width="100%" colspan="25"><table class="header_title"><tr><td align="right" width="8%"><b>Report: </b></td><td width="92%">Load Schedule w/ Panel Terminations</td></tr></table></td></tr><tr class="titleblock"><td width="8%" align="right"><b>Project: </b></td><td width="32%">TOO Many Amps 2018.10.22</td><td width="13%" align="right"><b>Dealer: </b></td><td width="47%">Volta Systems Group</td></tr><tr class="titleblock"><td align="right"><b>Creator: </b></td><td>
+                    Crestron D3 Pro v3.03.015</td><td align="right"><b>Description: </b></td><td></td></tr><tr class="titleblock"><td class="titlebottom" align="right"><b>Date: </b></td><td class="titlebottom">11/2/2018</td><td class="titlebottom" align="right"><b>System Number:</b></td><td class="titlebottom"></td></tr></table><br/><br/>
+			<table class="default" width="100%" style="border: 1pt solid black;	table-layout: fixed"/>
+			<col style="width: 1.30in"/>
+			<col style="width: 0.40in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.55in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.15in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.20in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.25in"/>
+			<tr class="sectionheader" valign="bottom">
+				<td class="header" align="left"><b>Area / Room / Controlled Ckt Name</b></td>
+				<td class="header" align="left"><b>Controlled Ckt No.</b></td>
+				<td class="header" align="left"><b>Status</b></td>
+				<td class="header" align="left"><b>Fixture</b></td>
+				<td class="header" align="left"><b>Load	Type</b></td>
+				<td class="header" align="left"><b>Fixture Watts</b></td>
+				<td class="header" align="left"><b>Fixture Qty</b></td>
+				<td class="header" align="left"><b>Total Watts</b></td>
+				<td class="header" align="left"><b>Dim</b></td>
+				<td class="header" align="left"><b>On Backup</b></td>
+				<td class="header" align="left"><b>Arc Fault</b></td>
+				<td class="header" align="left"><b>Enclosure</b></td>
+				<td class="header" align="left"><b>Slot</b></td>
+				<td class="header" align="left"><b>Module</b></td>
+				<td class="header" align="left"><b>Output</b></td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>KITCHEN<b> / </b>OFFICES</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Other</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">6</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">2</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>LOBBY<b> / </b>LOBBY GENERAL</td>
+				<td class="ld_cell" align="left">LP2-16</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Downlights</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">7</td>
+				<td class="ld_cell" align="left">CLX-1DIMU4</td>
+				<td class="ld_cell" align="left">2</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>LOBBY<b> / </b>LOBBY N DAYLIGHT ZONE</td>
+				<td class="ld_cell" align="left">LP2-16..</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Other</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">7</td>
+				<td class="ld_cell" align="left">CLX-1DIMU4</td>
+				<td class="ld_cell" align="left">1</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>RETAIL<b> / </b>RETAIL</td>
+				<td class="ld_cell" align="left">LP2-30</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Other</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">8</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">1</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>RETAIL<b> / </b>RETAIL DISPLAY</td>
+				<td class="ld_cell" align="left">LP2-32...</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">8</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">2</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>RETAIL<b> / </b>RETAIL DL DAYLIGHTING 2</td>
+				<td class="ld_cell" align="left">LP2-52.</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Downlights</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">8</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">7</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>RETAIL<b> / </b>RETAIL DL DAYLIGHTING CENTER CHANDELIER</td>
+				<td class="ld_cell" align="left">LP2-52</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Downlights</td>
+				<td class="ld_cell" align="left">Electronic LV</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">8</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>RETAIL<b> / </b>RETAIL PENDANT TRACK DAYLIGHTING</td>
+				<td class="ld_cell" align="left">LP2-32.</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Pendants</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">5</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>RETAIL<b> / </b>RETAIL PENDANT TRACK PART 1</td>
+				<td class="ld_cell" align="left">LP2-32</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Pendants</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">6</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>RETAIL<b> / </b>RETAIL PENDANT TRACK PART 2</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Pendants</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">7</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>RETAIL<b> / </b>RETAIL PENDANTS DAYLIGHTING CASH COUNTER</td>
+				<td class="ld_cell" align="left">LP2-52..</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Pendants</td>
+				<td class="ld_cell" align="left">Electronic LV</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 1</td>
+				<td class="ld_cell" align="left">5</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">8</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>SALOON<b> / </b>SALOON BAR COVE LIGHTS</td>
+				<td class="ld_cell" align="left">LP3-24</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Cove Lights</td>
+				<td class="ld_cell" align="left">Magnetic LV</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">120*</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">4</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">3</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>SALOON<b> / </b>SALOON BAR LIGHTS</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Ceiling Light</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">4</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">8</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>SALOON<b> / </b>SALOON BAR PENDANTS</td>
+				<td class="ld_cell" align="left">LP3-24.</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Pendants</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">4</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">4</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>SALOON<b> / </b>SALOON DOWNLIGHTS</td>
+				<td class="ld_cell" align="left">LP3-24..</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Downlights</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">4</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">6</td>
+			</tr>
+			<table class="page"/>
+			<table class="header" width="100%"><tr><td colspan="25" rowspan="3"><img width="200" src="logogr.jpg"/></td></tr><tr/><tr/><tr class="titleblock"><td class="titletop" width="100%" colspan="25"><table class="header_title"><tr><td align="right" width="8%"><b>Report: </b></td><td width="92%">Load Schedule w/ Panel Terminations</td></tr></table></td></tr><tr class="titleblock"><td width="8%" align="right"><b>Project: </b></td><td width="32%">TOO Many Amps 2018.10.22</td><td width="13%" align="right"><b>Dealer: </b></td><td width="47%">Volta Systems Group</td></tr><tr class="titleblock"><td align="right"><b>Creator: </b></td><td>
+                    Crestron D3 Pro v3.03.015</td><td align="right"><b>Description: </b></td><td></td></tr><tr class="titleblock"><td class="titlebottom" align="right"><b>Date: </b></td><td class="titlebottom">11/2/2018</td><td class="titlebottom" align="right"><b>System Number:</b></td><td class="titlebottom"></td></tr></table><br/><br/>
+			<table class="default" width="100%" style="border: 1pt solid black;	table-layout: fixed"/>
+			<col style="width: 1.30in"/>
+			<col style="width: 0.40in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.55in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.15in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.20in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.25in"/>
+			<tr class="sectionheader" valign="bottom">
+				<td class="header" align="left"><b>Area / Room / Controlled Ckt Name</b></td>
+				<td class="header" align="left"><b>Controlled Ckt No.</b></td>
+				<td class="header" align="left"><b>Status</b></td>
+				<td class="header" align="left"><b>Fixture</b></td>
+				<td class="header" align="left"><b>Load	Type</b></td>
+				<td class="header" align="left"><b>Fixture Watts</b></td>
+				<td class="header" align="left"><b>Fixture Qty</b></td>
+				<td class="header" align="left"><b>Total Watts</b></td>
+				<td class="header" align="left"><b>Dim</b></td>
+				<td class="header" align="left"><b>On Backup</b></td>
+				<td class="header" align="left"><b>Arc Fault</b></td>
+				<td class="header" align="left"><b>Enclosure</b></td>
+				<td class="header" align="left"><b>Slot</b></td>
+				<td class="header" align="left"><b>Module</b></td>
+				<td class="header" align="left"><b>Output</b></td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>SALOON<b> / </b>SALOON FANS</td>
+				<td class="ld_cell" align="left">LP3-26</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Exhaust Fan</td>
+				<td class="ld_cell" align="left">Switched (Non-Lighting)</td>
+				<td class="ld_cell" align="right">200</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">200</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-4HSW4</td>
+				<td class="ld_cell" align="left">1</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>SALOON<b> / </b>SALOON MEZZANINE SCONCES</td>
+				<td class="ld_cell" align="left">LP3-24...</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Sconces</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">4</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">1</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>SALOON<b> / </b>SALOON SCONES AND SEATING RM 102</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Other</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">4</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">7</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>SALOON<b> / </b>SALOON SEATING CHANDELIER</td>
+				<td class="ld_cell" align="left">LP3-24....</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Chandeliers</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">4</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">5</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>SALOON<b> / </b>SALOON SEATING DL PART 1</td>
+				<td class="ld_cell" align="left">LP3-24.......</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Downlights</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">2</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">7</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>SALOON<b> / </b>SALOON SEATING DL PART 2</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Downlights</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">2</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">8</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>SALOON<b> / </b>SALOON SEATING EAST DAYLIGHTING</td>
+				<td class="ld_cell" align="left">LP3-24.....</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Other</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">2</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">5</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>SALOON<b> / </b>SALOON SEATING NORTH DAYLIGHTING</td>
+				<td class="ld_cell" align="left">LP3-24......</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Other</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">2</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">6</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>SALOON<b> / </b>SALOON SEATING NORTH DAYLIGHTING-copy</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Other</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">6</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">8</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Equipment Area<b> / </b>SALOON<b> / </b>SALOON SERVICE LIGHTS</td>
+				<td class="ld_cell" align="left">LP3-24........</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Other</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">Enclosure 2</td>
+				<td class="ld_cell" align="left">4</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">2</td>
+			</tr>
+		</table>
+		<div style="font-size: 9pt; text-align: right">*Calculation of load wattage includes	transformer loss.</div>
+		<div style="font-size: 9pt; text-align: right">*LP - loop number, Add - short address.</div>
+	</body>
+</html>
